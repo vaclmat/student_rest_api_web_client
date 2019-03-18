@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  .main.container
+    .row
+      .col-md-6.col-md-offset-3
+        h1= 'Student Services'
+        
+        if role == 'admin'
+          a(href="/students/getAll") All student records
+          br
+          <form method="POST" action="/student/ByID">
+            label(for='username') Find student record by ID
+            input.form-control(type='text' placeholder='Enter student ID' name='sID')
+            button.btn.btn-primary(type='submit') Find student by ID
+          </form>
+          br
+          <form method="POST" action="/student/deleteByID">
+            label(for='username') Delete student record by ID
+            input.form-control(type='text' placeholder='Enter student ID' name='sID')
+            button.btn.btn-primary(type='submit') Delete student by ID
+          </form>
+          br
+          <form method="POST" action="/student/update">
+            label(for='username') Update student record by ID
+            input.form-control(type='text' placeholder='Enter student ID' name='sID')
+            button.btn.btn-primary(type='submit') Update student by ID
+          </form>
+          br
+          a(href="/student/create") Create new student record
+          
+        else
+          a(href="/students/getAll") All student records
+          br
+          <form method="POST" action="/student/ByID">
+            label(for='username') Find student record by ID
+            input.form-control(type='text' placeholder='Enter student ID' name='sID')
+            button.btn.btn-primary(type='submit') Find student by ID
+          </form>
+
+          

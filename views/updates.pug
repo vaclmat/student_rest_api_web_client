@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  .main.container
+    .row
+      .col-md-6.col-md-offset-3
+        h1= 'Update student record'
+        
+        // update student record form
+        form(method='POST' action='/student/updateresult')
+          div.form-group
+            label(for='studentID') studentID:
+            input#studentID.form-control(type='text', placeholder='studentID' name='studentID' value=studentID readonly=ro)
+          div.form-group
+            label(for='firstName') first Name:
+            input#firstName.form-control(type='text', placeholder='first Name' name='firstName' value=firstName)
+          div.form-group
+            label(for='lastName') last Name:
+            input#lastName.form-control(type='text', placeholder='last Name' name='lastName' value=lastName)
+          div.form-group
+            label(for='gender') Gender:
+            input#gender.form-control(type='text' placeholder='gender' name='gender' value=gender)
+          div.form-group
+          button.btn.btn-primary(type='submit') Update student record

@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  .main.container
+    .row
+      .col-md-6.col-md-offset-3
+        h1= 'User Services'
+        
+        if role == 'admin'
+          <form method="POST" action="/user/ByUserName">
+            label(for='username') Find user record by username
+            input.form-control(type='text' placeholder='Enter username' name='sID')
+            button.btn.btn-primary(type='submit') Find user by username
+          </form>
+          br
+          <form method="POST" action="/user/deleteByUserName">
+            label(for='username') Delete user record by username
+            input.form-control(type='text' placeholder='Enter username' name='sID')
+            button.btn.btn-primary(type='submit') Delete user by username
+          </form>
+          br
+          a(href="/user/create") Create new user record
+          br
+          <form method="POST" action="/user/update">
+            label(for='username') Update user record by username
+            input.form-control(type='text' placeholder='Enter username' name='sID')
+            button.btn.btn-primary(type='submit') Update user by username
+          </form>
+          
+        else
+          <form method="POST" action="/user/ByUserName">
+            label(for='username') Find user record by username
+            input.form-control(type='text' placeholder='Enter username' name='sID')
+            button.btn.btn-primary(type='submit') Find user by username
+          </form>
+          br
+          <form method="POST" action="/user/update">
+            label(for='username') Update user record by username
+            input.form-control(type='text' placeholder='Enter username' name='sID')
+            button.btn.btn-primary(type='submit') Update user by username
+          </form>
+
+          

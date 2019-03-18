@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  .main.container
+    .row
+      .col-md-6.col-md-offset-3
+        h1= 'Update user record'
+        
+        // update student record form
+        form(method='POST' action='/user/updateresult')
+          div.form-group
+            label(for='firstName') first Name:
+            input#firstName.form-control(type='text' value=firstName name='firstName')
+          div.form-group
+            label(for='lastName') last Name:
+            input#lastName.form-control(type='text' value=lastName name='lastName')
+          div.form-group
+            label(for='password') Password:
+            input#pw.form-control(type='password' value=password name='password')
+          div.form-group
+            label(for='pw2') Confirm Password:
+            input#pw2.form-control(type='password' value=confirmPassword name='confirmPassword')
+          div.form-group
+            label(for='userStatus') UserStatus:
+            input#userStatus.form-control(type='number', value=userStatus name='userStatus' readonly)
+          div.form-group
+            label(for='phone') Phone:
+            input#phone.form-control(type='text' value=phone name='phone')
+          div.form-group
+            label(for='userID') userID:
+            input#userID.form-control(type='number' value=userID name='userID' readonly)
+          div.form-group
+            label(for='email') Email:
+            input#email.form-control(type='email' value=email name='email')
+          div.form-group
+            label(for='username') userName:
+            input#username.form-control(type='text' value=username name='username' readonly)
+          div.form-group
+          button.btn.btn-primary(type='submit') Update student record

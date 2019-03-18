@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  .main.container
+    .row
+      .col-md-6.col-md-offset-3
+        h1= 'Create new student record'
+        
+        // new student record form
+        form(method='POST' action='/user/create')
+          div.form-group
+            label(for='firstName') first Name:
+            input#firstName.form-control(type='text', placeholder='first Name' name='firstName')
+          div.form-group
+            label(for='lastName') last Name:
+            input#lastName.form-control(type='text', placeholder='last Name' name='lastName')
+          div.form-group
+            label(for='password') Password:
+            input#pw.form-control(type='password' name='password')
+          div.form-group
+            label(for='pw2') Confirm Password:
+            input#pw2.form-control(type='password' name='confirmPassword')
+          div.form-group
+            label(for='userStatus') UserStatus:
+            input#userStatus.form-control(type='number', value=0 name='userStatus' readonly)
+          div.form-group
+            label(for='phone') Phone:
+            input#phone.form-control(type='text' name='phone')
+          div.form-group
+            label(for='userID') userID:
+            input#userID.form-control(type='number' name='userID')
+          div.form-group
+            label(for='email') Email:
+            input#email.form-control(type='email', placeholder='name@email.com' name='email')
+          div.form-group
+            label(for='username') userName:
+            input#username.form-control(type='text', placeholder='userName' name='username')
+          button.btn.btn-primary(type='submit') Create student record
