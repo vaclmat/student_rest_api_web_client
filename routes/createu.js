@@ -2,28 +2,25 @@
 const express = require("express");
 var store = require('store');
 const Swagger = require('swagger-client');
+var sp = require('./sp');
 
 
 const router = express.Router();
 
-// Display the register page
 router.get("/", (req, res) => {
   res.render('createu', { user: store.get('user').user });
 });
 
 router.post('/', function(req, res, done) {  
-//   console.log(req.body);
    if (req.body.password === req.body.confirmPassword) {
      var userdata = req.body;
    delete userdata['confirmPassword'];
    userdata['userID'] = parseInt(req.body['userID'], 10);
    userdata['userStatus'] = parseInt(req.body['userStatus'], 10);
-//   console.log(userdata);
    var tk = store.get('token').token;
-//   console.log(tk);
 
    const request = {
-     url:'http://192.168.27.3:8081/web/services/university/user',
+     url: sp + 'user',
      method: 'POST',
      headers: {
 		  'Accept': 'application/json',
@@ -36,21 +33,8 @@ router.post('/', function(req, res, done) {
  
 Swagger.http(request)
   .then((ress) => {
-//    console.log("statusCode: " + res.statusCode); // status code
-//    console.log("body: " + res.body);       // JSON object or undefined
-//    console.log("obj: " + res.obj);        // same as above, legacy
-//    console.log("text: " + res.text);       // textual body, or Blob
-//    console.log("headers: " + res.headers);    // header hash 
     if (ress.statusText === "OK") {
-//    	var studentobj = JSON.parse(ress.text);
-//    	Object.entries(studentobj.student).forEach(([key, value]) => console.log(`${key}: ${value}`));
-//        console.log("Student: " + studentobj);
-//        console.log(studentobj.student.studentID);
-//        store.set('student', {student: ress.text});
-//        res.render('ByID', { titleb: 'Student by ID', studentID: studentobj.student.studentID, firstName: studentobj.student.firstName, lastName: studentobj.student.lastName, gender: studentobj.student.gender, user: store.get('user').user });
-        res.render('createuresult', { response: ress.text, user: store.get('user').user });
- //       done(null, true);
-        
+        res.render('createuresult', { response: ress.text, user: store.get('user').user });      
         
     } else {
     	console.log("statusText: " + ress.statusText); // status text, ie: "Not Found"

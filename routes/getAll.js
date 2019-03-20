@@ -2,6 +2,7 @@
 const express = require("express");
 const Swagger = require('swagger-client');
 var store = require('store');
+var sp = require('./sp');
 
 
 const router = express.Router();
@@ -11,7 +12,7 @@ router.get('/', function(req, res, done) {
 //   console.log(tk);
 
    const request = {
-     url:'http://192.168.27.3:8081/web/services/university/students/',
+     url: sp + 'students/',
      method: 'GET',
      headers: {
 		  'Accept': 'application/json',
@@ -23,16 +24,9 @@ router.get('/', function(req, res, done) {
  
 Swagger.http(request)
   .then((ress) => {
-//    console.log("statusCode: " + res.statusCode); // status code
     if (ress.statusText === "OK") {
     	var studentobj = ress.text;
-//        console.log("Students: " + studentobj);
-//        store.set('student', {student: ress.text});
-        res.render('getAll', { students: studentobj, user: store.get('user').user });
-        
- //       done(null, true);
-        
-        
+        res.render('getAll', { students: studentobj, user: store.get('user').user }); 
     } else {
     	console.log("statusText: " + ress.statusText); // status text, ie: "Not Found"
     	done(null, false);

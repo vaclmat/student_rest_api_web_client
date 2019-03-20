@@ -2,20 +2,15 @@
 const express = require("express");
 var store = require('store');
 const Swagger = require('swagger-client');
-
+var sp = require('./sp');
 
 const router = express.Router();
 
-// Display the register page
-
-
 router.post('/', function(req, res, done) {  
-   console.log(req.body);
    var tk = store.get('token').token;
-//   console.log(tk);
 
    const request = {
-     url:'http://192.168.27.3:8081/web/services/university/student/' + req.body.sID,
+     url: sp + 'student/' + req.body.sID,
      method: 'GET',
      headers: {
 		  'Accept': 'application/json',
