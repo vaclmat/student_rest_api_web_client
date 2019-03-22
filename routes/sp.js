@@ -1,6 +1,6 @@
 /*eslint-env node */
 'use strict';
 
-const server_path = 'http://192.168.27.3:8081/web/services/university/';
+const server_path = 'https://193.86.84.225/web/services/university/';
 
 module.exports = server_path;

@@ -5,6 +5,8 @@ var store = require('store');
 var jwt = require('jsonwebtoken');
 var sp = require('./sp');
 
+process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
+
 
 const router = express.Router();
 
