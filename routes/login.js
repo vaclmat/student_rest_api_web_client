@@ -31,7 +31,9 @@ Swagger.http(request)
     if (res.statusText === "OK") {
     	var tokenobj = JSON.parse(res.text);
     	if (tokenobj["token"] === undefined) {
-    		ress.render('login', {response: JSON.parse(res.text)});
+    		var fu = tokenobj["API user with following username was not authenticated"];
+    		var responsetxt = "API user with following username was not authenticated:" + fu;
+    		ress.render('login', {response: responsetxt});
     	} else {
         var tokenString = tokenobj["token"];
         store.set('token', {token: tokenString});
