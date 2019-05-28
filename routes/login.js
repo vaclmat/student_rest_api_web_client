@@ -31,7 +31,7 @@ Swagger.http(request)
     if (res.statusText === "OK") {
     	var tokenobj = JSON.parse(res.text);
     	if (tokenobj["token"] === undefined) {
-    		ress.render('login', {response: tokenobj});
+    		ress.render('login', {response: JSON.parse(res.text)});
     	} else {
         var tokenString = tokenobj["token"];
         store.set('token', {token: tokenString});
