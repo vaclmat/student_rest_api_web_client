@@ -30,6 +30,9 @@ Swagger.http(request)
   .then((res) => {
     if (res.statusText === "OK") {
     	var tokenobj = JSON.parse(res.text);
+    	if (tokenobj["token"] === undefined) {
+    		ress.render('login', {response: tokenobj});
+    	} else {
         var tokenString = tokenobj["token"];
         store.set('token', {token: tokenString});
         store.set('user', {user: logindata.username});
@@ -37,6 +40,7 @@ Swagger.http(request)
         var decoded = jwt.decode(tokenString);
         store.set('role', {role: decoded.role});
         ress.render('sservices', { titles: 'User Services', user: store.get('user').user, role: store.get('role').role});
+        }
     } else {
     	console.log("statusText: " + res.statusText); // status text, ie: "Not Found"
     	done(null, false);
