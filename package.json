@@ -20,6 +20,6 @@
     "passport-local": "^1.0.0",
     "pug": "^2.0.3",
     "store": "^2.0.12",
-    "swagger-client": "^3.8.25"
+    "swagger-client": "^3.18.5"
   }
 }
